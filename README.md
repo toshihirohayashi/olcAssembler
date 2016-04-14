@@ -3,7 +3,7 @@
 ## Usage
 **olcAssembler** [options] **-i** 〈output_of_nucmer〉 **-f** 〈contigs_fasta_file〉 **-o** 〈outfile_prefix〉
 
-  **-h**"             "**--help**     show help message
+  **-h**    **--help**     show help message
   
   **-i**    **--input**    input file. This is supposed to be the output file from nucmer (default: nucmer.delta)
   
