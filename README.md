@@ -1,4 +1,5 @@
-# OLC-based Assembler
+# olcAssembler
+**olcAssembler** is o**verlap layout consensus (OLC) assembler** which can assemble contigs based on their overlap. The program uses a fasta file of contigs and its overlap information (nucmer.delta) gained from nucmer as input, and returns all possible assemblies by traversing a directed acyclic (DAG) graph which has contigs as its vertices and overlaps as edges. This program was made with an assumption that contigs length is much longer than overlapping parts so you can't use this for assembling reads which normmally have very long overlap with others relative to their length. 
 
 ## Usage
 **olcAssembler** [options] **-i** 〈output_of_nucmer〉 **-f** 〈contigs_fasta_file〉 **-o** 〈outfile_prefix〉
@@ -9,3 +10,5 @@
   -f  --fasta   input fasta file which you used in nucmer to get overlap information (default: contigs.fa)
   -c  --cutoff  cutoff overlaps whose second contig has a shorter tail (a part after the overlapping area) than its head (a part before the overlap). This has to be ON or OFF (default: ON)
   ```
+
+## Example
