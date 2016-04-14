@@ -1,0 +1,232 @@
+#!/bin/python3.4
+
+import argparse
+import random
+import sys
+
+
+class Overlap:
+	'Class to deal with overlap information from nucmer' 
+	count = 0
+	nameList = [] 
+
+	def __init__(self, suffix, prefix, suffixLength, prefixLength, suffixStart, suffixEnd, prefixStart, prefixEnd, difference):
+		self.suffix = suffix 
+		self.prefix = prefix
+		self.suffixLength = suffixLength
+		self.prefixLength = prefixLength
+		self.suffixStart = suffixStart
+		self.suffixEnd = suffixEnd
+		self.prefixStart = prefixStart
+		self.prefixEnd = prefixEnd
+		self.difference = difference 
+		Overlap.count += 1
+		if self.suffix not in Overlap.nameList:
+			Overlap.nameList.append(self.suffix)
+		if self.prefix not in Overlap.nameList:
+			Overlap.nameList.append(self.prefix)
+
+	
+	def display(self):
+		"to print Overlap object" 
+		print("suffix:" + str(self.suffix) + ", length:" + str(self.suffixLength) + ", range:" + str(self.suffixStart) + "-" + str(self.suffixEnd) )
+		print("prefix:" + str(self.prefix) + ", length:" + str(self.prefixLength) + ", range:" + str(self.prefixStart) + "-" + str(self.prefixEnd) )
+   
+
+	def searchSuffix(self, suffix):
+		"return True if the Overlap object has specidied contig as suffix" 
+		if self.suffix == suffix:
+			return True
+		else:
+			return False
+
+
+
+def readNucmerDelta(input_file):
+	"to read an output from nucmer (nucmer.delta)"
+
+	ovlps = [] 
+	name = []
+	with open(input_file) as file:
+		for line in file.readlines():
+			if line[0] == ">":
+				line = line.replace("\n","")
+				line = line.replace(">","")
+				name = line.split()
+			elif len(name) > 0:
+				line = line.replace("\n","")
+				line = line.split()
+				if len(line) == 7:
+					ovlps.append(name)
+					ovlps[-1] = ovlps[-1] + line
+				else:
+					ovlps[-1] = ovlps[-1] + line
+
+			else:
+				continue
+
+	return ovlps 
+
+
+
+
+def readFasta(input_file):
+	"read a fasta file and create dictionary which store sequences with their names as keys"
+
+	seqs = {} 
+
+	with open(input_file) as file:
+		for line in file.readlines():
+			if line[0] == ">":
+				name = line.replace("\n","")
+				name = name.replace(">","")
+				seqs[name] = ""
+			else:
+				line = line.replace("\n","")
+				seqs[name] += line
+	return seqs 
+
+
+
+def writeFasta(output_file, seqs):
+	"generate a new fasta file from dictionary of sequences."
+	with open(output_file, 'w') as file: 
+	    for key in seqs:
+	        count=0
+	        file.write(">" + key + "\n")
+	        while count < len(seqs[key]): 
+	            if int(count + 1) % 80 == 0:       # break line every 80 bases
+	                file.write(seqs[key][count] + "\n")
+	            elif count + 1 == len(seqs[key]):       
+	                file.write(seqs[key][count] + "\n")
+	            else:
+	                file.write(seqs[key][count])
+	            count += 1
+
+
+
+
+
+#######################################################################################################################################
+
+if __name__ == "__main__":
+
+
+	parser = argparse.ArgumentParser(description='Introduce indels and SNVs to sequences in a specified fasta file')
+	parser.add_argument('-i', '--input', default='nucmer.delta', help='Input file. This is supposed to be the output file from nucmer')
+	parser.add_argument('-o', '--output', default='assemblies.fa', help='Input file. This is supposed to be the output file from nucmer')
+	parser.add_argument('-f', '--fasta', help='Input fasta file which you used in nucmer to get overlap information')
+	parser.add_argument('-c', '--cutoff', default='ON', help='Cutoff unreliable overlaps whose second contig has a shorter tail (a part after the overlapping area) than its head (a part before the overlap). This has to be ON (default) or OFF')
+	args = parser.parse_args()
+	
+
+
+	# Requires python3
+	if sys.version_info[0] < 3:
+		print("This script requires Python version 3")
+		sys.exit(1)
+
+	# if -cutoff doesn't receive on or off
+	if args.cutoff != "ON" and args.cutoff != "OFF":
+		print("-cutoff has to be ON or OFF")
+		sys.exit(1)
+
+
+
+
+	#Read nucmer.delta and store its data into ovrpList as Overlap object
+	data = readNucmerDelta(args.input)
+	preOvrlpList = []
+	for ovrlp in data:
+		preOvrlpList.append(Overlap(ovrlp[0], ovrlp[1], int(ovrlp[2]), int(ovrlp[3]), int(ovrlp[4]), int(ovrlp[5]), int(ovrlp[6]), int(ovrlp[7]), int(ovrlp[8])))		
+	
+	#Delete complete overlaps & redundancies & subreads
+	ovrlpList = []
+	for ovrlp in preOvrlpList:
+		if ovrlp.suffixLength == (ovrlp.suffixEnd - ovrlp.suffixStart + 1) or ovrlp.prefixLength == (ovrlp.prefixEnd - ovrlp.prefixStart + 1):
+			continue
+		elif ovrlp.suffixStart <= ovrlp.prefixStart:
+			continue
+		elif ovrlp.prefixLength <= (ovrlp.suffixEnd - ovrlp.suffixStart + 1):
+			continue
+		elif (ovrlp.prefixLength - ovrlp.prefixEnd) <= (ovrlp.prefixStart - 1) and args.cutoff == "ON":
+			continue
+		else:
+			ovrlpList.append(ovrlp)
+	
+
+
+	#Find start points for path searching
+	startList = []
+	for name in Overlap.nameList:
+		startList.append(name)
+		for ovrlp in ovrlpList:
+			if name == ovrlp.prefix:
+				startList.remove(name)
+				break
+			else:
+				continue
+
+	intermediateList = []	
+	for ovrlp in ovrlpList:
+		if ovrlp.suffix in startList:
+			intermediateList.append([ovrlp])
+
+
+
+	# if there are no starting points (no contigs which don't have overlap in its prefix") 
+	if len(startList) == 0:
+		print("There are no contigs which can be the starting point of the assembly")
+		sys.exit(1)
+
+
+
+	#Find end points for path searching
+	endList = []
+	for name in Overlap.nameList:
+		endList.append(name)
+		for ovrlp in ovrlpList:
+			if name == ovrlp.suffix:
+				endList.remove(name)
+				break
+			else:
+				continue
+
+
+
+	#Extends start points & explore all possible paths (like DFS)
+	assemblyList = []
+	for intermediate in intermediateList:
+		for ovrlp in ovrlpList:
+			if ovrlp.searchSuffix(intermediate[-1].prefix) and ovrlp not in intermediate:	
+				newIntermediate = intermediate + [ovrlp]
+				if newIntermediate[-1].prefix in endList:	
+					assemblyList.append(newIntermediate)
+				else:
+					intermediateList.append(newIntermediate)
+			else:
+				continue
+ 
+
+
+
+	#Assemble contigs based on gained paths
+	seqOfContigs = readFasta(args.fasta)
+	assemblies = {}
+	for assembly in assemblyList:
+		name = assembly[0].suffix + "-" + assembly[0].prefix  
+		seq = seqOfContigs[assembly[0].suffix][:assembly[0].suffixEnd] + seqOfContigs[assembly[0].prefix][assembly[0].prefixEnd:] 	
+
+		for ovrlp in assembly[1:]:
+			name += "-" + ovrlp.prefix
+			seq += seqOfContigs[ovrlp.prefix][ovrlp.prefixEnd:] 	
+
+		assemblies[name] = seq
+
+	sortedAssemblies = {}
+	for k in sorted(assemblies, key=lambda k: len(assemblies[k]), reverse=True):
+		sortedAssemblies[k] = assemblies[k]
+
+	writeFasta(args.output, sortedAssemblies)
+
+
