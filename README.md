@@ -23,9 +23,9 @@
 </div>
 <br>
 Firstly, I applied this program to the simplest case, in which each contig overlaps another contig at the both ends except for two terminal contigs (fig1). There is an only one possible way to assembly these four contigs together (A-B-C-D), so I can say that this program successfully assembled contigs if it returns the assembly. Here are how I performed on command line, the input files and the output assembly file.   
-
+```
 olcAssembler -i [abcd.delta][2] -f [abcd.fa][1] -o [assembly_abcd.fa][3]
-
+```
 [1]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abcd.fa        "abcd.fa"
 [2]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abcd.delta  "abcd.delta"
 [3]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/assemblies/assembly_abcd.fa   "assembly_abcd.fa"
