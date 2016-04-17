@@ -36,14 +36,20 @@ As you can see, I could actually get the one assembly exactly as how I expected.
 
 
 
-###2. diverge and merge
+###2. diverge
 <div align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A32.PNG" width="400" height="240" />
+</div>
+<div align="center">
+<b>Figure2. Assembly of contigs with two possible paths.</b>   
 </div>
 
 ###3. repeat
 <div align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A33.PNG" width="630" height="252" />
+</div>
+<div align="center">
+<b>Figure3. Assembly of contigs with repeat.</b>   
 </div>
 
 
