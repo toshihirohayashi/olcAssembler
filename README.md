@@ -12,8 +12,8 @@
   ```
 
 ## Example
-src="https://camo.githubusercontent.com/..." alt="" data-canonical-src="https://upload.wikimedia.org/wikipedia/commons/f/ff/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A3.PNG" width="200" height="400" />
-![](https://upload.wikimedia.org/wikipedia/commons/f/ff/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A3.PNG =100×20).
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A3.PNG" width="200" height="400" />
+
 ![](https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A33.PNG).
 ![](https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A32.PNG).
 
