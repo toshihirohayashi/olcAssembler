@@ -12,7 +12,7 @@
   ```
 
 ## Example
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A3.PNG" width="400" height="200" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A3.PNG" width="500" height="200" />
 
 ![](https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A33.PNG).
 ![](https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A32.PNG).
