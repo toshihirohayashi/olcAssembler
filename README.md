@@ -17,11 +17,11 @@
 </div>
 
 <div align="center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A32.PNG" width="500" height="200" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A32.PNG" width="450" height="200" />
 </div>
 
 <div align="center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A33.PNG" width="600" height="200" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/29/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A33.PNG" width="550" height="200" />
 </div>
 
 
