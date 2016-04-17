@@ -114,8 +114,8 @@ if __name__ == "__main__":
 
 	parser = argparse.ArgumentParser(description='Introduce indels and SNVs to sequences in a specified fasta file')
 	parser.add_argument('-i', '--input', default='nucmer.delta', help='Input file. This is supposed to be the output file from nucmer')
-	parser.add_argument('-o', '--output', default='assemblies.fa', help='Input file. This is supposed to be the output file from nucmer')
-	parser.add_argument('-f', '--fasta', help='Input fasta file which you used in nucmer to get overlap information')
+	parser.add_argument('-o', '--output', default='assemblies.fa', help='the prefix for output filename')
+	parser.add_argument('-f', '--fasta', default='contigs.fa', help='Input fasta file which you used in nucmer to get overlap information')
 	parser.add_argument('-c', '--cutoff', default='ON', help='Cutoff unreliable overlaps whose second contig has a shorter tail (a part after the overlapping area) than its head (a part before the overlap). This has to be ON (default) or OFF')
 	args = parser.parse_args()
 	
