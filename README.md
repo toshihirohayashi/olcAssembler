@@ -43,6 +43,14 @@ As you can see, I could actually get the one assembly exactly as how I expected.
 <div align="center">
 <b>Figure2. Assembly of contigs with two possible paths.</b>   
 </div>
+<br>
+
+**olcAssembler** **-i** [abd_or_acd.delta][4] **-f** [abd_or_acd.fa][5] **-o** [assembly_abd_or_acd.fa][6]
+
+[4]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abd_or_acd.delta     "abd_or_acd.delta"
+[5]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abd_or_acd.fa  "abd_or_acd.fa"
+[6]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/assemblies/assembly_abd_or_acd.fa "assembly_abd_or_acd.fa"
+
 
 ###3. repeat
 <div align="center">
@@ -51,5 +59,10 @@ As you can see, I could actually get the one assembly exactly as how I expected.
 <div align="center">
 <b>Figure3. Assembly of contigs with repeat.</b>   
 </div>
+<br>
 
+**olcAssembler** **-i** [abcbd.delta][7] **-f** [abcbd.fa][8] **-o** [assembly_abcbd.fa][9]
 
+[7]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abcbd.delta     "abcbd.delta"
+[8]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abcbd.fa "abcbd.fa"
+[9]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/assemblies/assembly_abcbd.fa "assembly_abcbd.fa"
