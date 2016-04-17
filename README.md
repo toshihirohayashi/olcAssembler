@@ -21,6 +21,7 @@
 <div align="center">
 <b>Figure1. Assembly of four siquencially overlapping contigs.</b>   
 </div>
+<br>
 Firstly, I applied this program to the simplest case, in which each contig overlaps another contig at the both ends except for two terminal contigs (fig1). There is an only one possible way to assembly these four contigs together (A-B-C-D), so I can say that this program successfully assembled contigs if it returns the assembly. Here are the input files, how I performed on command line and the output assembly file. As you can see, I could actually get the one assembly exactly like I expected.
 
 
