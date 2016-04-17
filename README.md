@@ -30,7 +30,7 @@ Firstly, I applied this program to the simplest case, in which each contig overl
 [2]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abcd.delta  "abcd.delta"
 [3]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/assemblies/assembly_abcd.fa   "assembly_abcd.fa"
 
-As you can see, I could actually get the one assembly exactly like I expected.
+As you can see, I could actually get the one assembly exactly as how I expected.
 
 
 
