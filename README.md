@@ -17,6 +17,7 @@
 ###1. straight
 <div align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A3.PNG" width="450" height="180" />
+**Figure1. Assembly of four siquencially overlapping contigs.**  
 </div>
 Firstly, I applied this program to the simplest case, in which each contig overlaps another contig at the both ends except for two terminal contigs (fig1). There is an only one possible way to assembly these four contigs together (A-B-C-D), so I can say that this program successfully assembled contigs if it returns the assembly. Here are the input files, how I performed on command line and the output assembly file. As you can see, I could actually get the one assembly exactly like I expected.
 
