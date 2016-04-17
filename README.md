@@ -45,6 +45,7 @@ As you can see, I could actually get the one assembly exactly as how I expected.
 </div>
 <br>
 
+
 **olcAssembler** **-i** [abd_or_acd.delta][4] **-f** [abd_or_acd.fa][5] **-o** [assembly_abd_or_acd.fa][6]
 
 [4]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abd_or_acd.delta     "abd_or_acd.delta"
@@ -60,8 +61,11 @@ As you can see, I could actually get the one assembly exactly as how I expected.
 <b>Figure3. Assembly of contigs with repeat.</b>   
 </div>
 <br>
+Next I considered the situation where contigs have two possible way of being assembled (A-B-D or A-C-D) (fig2).
 
 **olcAssembler** **-i** [abcbd.delta][7] **-f** [abcbd.fa][8] **-o** [assembly_abcbd.fa][9]
+
+You can see that the program worked appropriately even with divergence as well.
 
 [7]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abcbd.delta     "abcbd.delta"
 [8]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abcbd.fa "abcbd.fa"
