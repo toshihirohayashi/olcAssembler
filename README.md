@@ -65,8 +65,11 @@ You can see that the program worked appropriately even with divergence as well.
 </div>
 <br>
 
-**olcAssembler** **-i** [abcbd.delta][7] **-f** [abcbd.fa][8] **-o** [assembly_abcbd.fa][9]
+This is the situation in which an overlap graph of a genome contain two-copy repeat (fig3). There are two possible paths to traverse this graph (A-B-D or A-B-C-B-D). Besides, assembling these contigs arouse one problem: the tail of C can have an overlap with that of A. If I let this happen, contig A and C start having an edge in the graph and it doesn’t make any sense in this context. Therefore I added “-c” feature to avoid the overlap between two tails (see explanation above). 
 
+**olcAssembler** **-i** [abcbd.delta][7] **-f** [abcbd.fa][8] **-o** [assembly_abcbd.fa][9]  **-c** ON
+
+You can find these two paths in the output file. Thus I concluded that this program is capable of assembling contigs in all possible situations.
 
 [7]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abcbd.delta     "abcbd.delta"
 [8]: https://raw.githubusercontent.com/toshihirohayashi/olcAssembler/master/testdata/contigs/abcbd.fa "abcbd.fa"
