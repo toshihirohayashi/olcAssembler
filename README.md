@@ -19,7 +19,7 @@
   ```
 
 ## Example
- I prepared three typical situations which is likely to happen in assembly to see this program’s capability to deal with them.
+ I prepared three typical situations which are likely to happen in assembly to see this program’s capability to deal with them.
  
 ###1. straight
 <div align="center">
