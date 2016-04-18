@@ -6,7 +6,7 @@
 2. Delete unnecessary overlaps; e.g. overlaps between itself, redundant entries and so on. Thus we can get DAG.
 3. Search contigs without incoming edges which can be startpoints of assembly.
 4. Extend start points based on DAG. This process doesn't allow to take the same path again.
-5. Construct assembly based on the found paths.
+5. Construct assemblies based on the found paths.
 
 ## Usage
 **olcAssembler** [options] **-i** 〈output_of_nucmer〉 **-f** 〈contigs_fasta_file〉 **-o** 〈outfile_prefix〉
