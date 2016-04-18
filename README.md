@@ -1,9 +1,9 @@
 # olcAssembler
-**olcAssembler** is **an overlap layout consensus (OLC) assembler** which assemble contigs simply based on their overlap. The program uses a fasta file of contigs and its overlap information (nucmer.delta) gained from nucmer as input, and returns all possible assemblies by traversing a directed acyclic (DAG) graph which has contigs as its vertices and overlaps as edges. This program was made with an assumption that contigs length is much longer than overlapping parts so you can't use this for assembling reads whose most of the part normaly overlaps with others unlike overlaps between contigs. 
+**olcAssembler** is **an overlap layout consensus (OLC) assembler** which assemble contigs simply based on their overlaps. The program uses a fasta file of contigs and its overlap information (nucmer.delta) gained from nucmer as input, and returns all possible assemblies by traversing a directed acyclic (DAG) graph which has contigs as its vertices and overlaps as edges. This program was made with an assumption that contigs length is much longer than overlapping parts so you can't use this for assembling reads whose most of the part normaly overlaps with others unlike overlaps between contigs. 
 
 ## Basic algorithm
-1. Read the output form nucmer (nucmer.delta) and store its information as an newly defined "Overlap" object.
-2. Delte unnecessary overlaps; e.g. overlaps between itself, redundant entries and so on. Thus we can get DAG.
+1. Read the output form nucmer and store its information as a list of Overlap objects.
+2. Delete unnecessary overlaps; e.g. overlaps between itself, redundant entries and so on. Thus we can get DAG.
 3. Search contigs without incoming edges which can be startpoints of assembly.
 4. Extend start points based on DAG. This process doesn't allow to take the same path again.
 5. Construct assembly based on the found paths.
