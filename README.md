@@ -7,7 +7,7 @@
 3. Search contigs without incoming edges which can be startpoints of assembly.
 4. Extend assemblies based on the DAG. This process doesn't allow to take the same path again.
 5. All intermediate assemblies are stored in a list and each of them is extended from its tail so that the program can handle divergences in the DAG.
-6. Terminate an assembly when it reaches to vertex without any outgoing edges.   
+6. Terminate an assembly when it reaches to a vertex without any outgoing edges.   
 7. Construct the sequecen of each assembly based on the found paths.
 
 ## Usage
